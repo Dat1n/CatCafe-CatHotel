@@ -13,6 +13,26 @@
 /*-----------------------------------*\
   #CUSTOM PROPERTY
 \*-----------------------------------*/
+.special-dish-content .section-subtitle,
+.special-dish-content .section-title,
+.special-dish-content .section-text,
+.special-dish-content .del,
+.special-dish-content .span,
+.special-dish-content .btn .text {
+  color: var(--black); /* Ensure all text is black */
+}
+
+.service .section-subtitle,
+.service .section-title,
+.service .section-text,
+.service .card-title a,
+.service .btn-text {
+  color: var(--black); /* Set text color to black */
+}
+
+#cathotel .section-title {
+  color: var(--black); /* Set "Cat Hotel" title text color to black */
+}
 
 :root {
 
@@ -259,7 +279,6 @@ body.nav-active { overflow: hidden; }
 
 
 
-
 /*-----------------------------------*\
   #REUSED STYLE
 \*-----------------------------------*/
@@ -407,7 +426,7 @@ body.nav-active { overflow: hidden; }
   z-index: 1;
 }
 
-.bg-black-10 { background-color: var(--smoky-black-2); }
+.bg-black-10 { background-color: var(--white); }
 
 .grid-list {
   display: grid;
@@ -448,7 +467,7 @@ body.nav-active { overflow: hidden; }
   transition: var(--transition-1);
 }
 
-.btn-text:is(:hover, :focus-visible) { color: var(--white); }
+.btn-text:is(:hover, :focus-visible) { color: var(--davys-grey); }
 
 .shape {
   display: none;
@@ -552,7 +571,7 @@ body.nav-active { overflow: hidden; }
   border: 3px solid var(--white);
   border-block-start-color: var(--smoky-black-3);
   margin-block-end: 45px;
-  animation: rotate360 1s linear infinite;
+  animation: rotate360 3s linear infinite;
 }
 
 @keyframes rotate360 {
@@ -563,17 +582,17 @@ body.nav-active { overflow: hidden; }
 .preload .text {
   background-image: var(--loading-text-gradient);
   background-size: 500%;
-  font-size: calc(2rem + 3vw);
+  font-size: calc(1.5rem + 2vw);
   font-weight: var(--weight-bold);
   line-height: 1em;
   text-transform: uppercase;
-  letter-spacing: 16px;
+  letter-spacing: 1px;
   padding-inline-start: 16px;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-stroke: 0.5px var(--eerie-black-3);
-  animation: loadingText linear 2s infinite;
+  animation: loadingText linear 3s infinite;
 }
 
 @keyframes loadingText {
@@ -615,8 +634,8 @@ body.nav-active { overflow: hidden; }
 
 .header.active {
   padding-block: 20px;
-  background-color: var(--eerie-black-4);
-  border-color: var(--black-alpha-15);
+  background-color: var(--white);
+  border-color: var(--white);
 }
 
 .header.hide {
@@ -640,10 +659,10 @@ body.nav-active { overflow: hidden; }
 .nav-open-btn .line {
   width: 30px;
   height: 2px;
-  background-color: var(--white);
+  background-color: var(--black);
   margin-block: 4px;
   transform-origin: left;
-  animation: menuBtn 400ms ease-in-out alternate infinite;
+
 }
 
 @keyframes menuBtn {
@@ -776,6 +795,25 @@ body.nav-active { overflow: hidden; }
 \*-----------------------------------*/
 
 .hero .slider-btn { display: none; }
+
+.hero .slider-item.active .hero-title,
+.hero .slider-item.active .hero-text,
+.hero .slider-item.active .section-subtitle {
+  color: black; /* Set the text color to black */
+}
+
+/* Targeting the specific button */
+a.btn.slider-reveal .text-1 {
+  color: black;
+}
+
+/* For screens smaller than 768px (phones) */
+@media (max-width: 768px) {
+  a.btn.slider-reveal {
+    background-color: var(--gold-crayola); /* Gold background */
+  }
+}
+
 
 .hero {
   position: relative;
@@ -947,6 +985,18 @@ body.nav-active { overflow: hidden; }
 /*-----------------------------------*\
   #ABOUT
 \*-----------------------------------*/
+#about {
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
+}
+
+#about .section-title,
+#about .section-subtitle,
+#about .section-text,
+#about .contact-label,
+#about .contact-number {
+  color: black; /* Ensure all text inside #about is black */
+}
 
 .about .section-text { margin-block: 15px 30px; }
 
@@ -1040,9 +1090,23 @@ body.nav-active { overflow: hidden; }
 
 
 
+
 /*-----------------------------------*\
   #MENU
 \*-----------------------------------*/
+
+.menu {
+  background-color: rgb(255, 255, 255); /* Set background to white */
+}
+
+.menu .section-title, 
+.menu .section-subtitle, 
+.menu .card-title, 
+.menu .card-text, 
+.menu .span {
+  color: rgb(0, 0, 0); /* Ensure all text elements inside .menu are black */
+}
+
 
 .menu .section-title { margin-block-end: 40px; }
 
@@ -1084,18 +1148,18 @@ body.nav-active { overflow: hidden; }
 }
 
 .menu-card .span {
-  color: var(--gold-crayola);
+  color: var(--black);
   margin-block: 10px;
 }
 
 .menu-card .card-text {
-  color: var(--quick-silver);
+  color: var(--black);
   line-height: var(--lineHeight-4);
 }
 
 .menu-text .span {
   display: inline-block;
-  color: var(--gold-crayola);
+  color: var(--black);
 }
 
 .menu .btn {
@@ -1161,76 +1225,27 @@ body.nav-active { overflow: hidden; }
 
 
 
-
-
-/*-----------------------------------*\
-  #RESERVATION
-\*-----------------------------------*/
-
-.reservation-form { margin-block-start: -270px; }
-
-.form-text { margin-block-end: 40px; }
-
-.form-text .link {
-  display: inline;
-  color: var(--gold-crayola);
-}
-
-.form-right .headline-1 { margin-block-end: 40px; }
-
-.form-right .contact-label { margin-block-end: 5px; }
-
-.form-right .separator { margin: 20px auto; }
-
-.form-right .body-4 {
-  color: var(--quick-silver);
-  line-height: var(--lineHeight-3);
-}
-
-.form-right .body-4:not(:last-child) { margin-block-end: 25px; }
-
-.form-left,
-.form-right { padding: 40px 20px 30px; }
-
-.input-field[type="date"] {
-  text-transform: uppercase;
-  padding-inline-end: 10px;
-}
-
-.input-field[type="date"]::-webkit-calendar-picker-indicator { opacity: 0; }
-
-textarea.input-field {
-  resize: none;
-  height: 140px;
-  padding-block: 20px;
-  line-height: var(--lineHeight-1);
-}
-
-.form-left .btn {
-  max-width: 100%;
-  width: 100%;
-}
-
-.form-right {
-  background-repeat: repeat;
-  background-position: top left;
-}
-
-
-
-
-
 /*-----------------------------------*\
   #FEATURES
 \*-----------------------------------*/
+.features {
+  background-color: white !important;
+  color: black !important;
+}
+
+.features .section-title,
+.features .card-title,
+.features .card-text {
+  color: black !important;
+}
 
 .features .section-title { margin-block-end: 40px; }
 
 .feature-card { padding: 30px 20px 40px; }
 
-.feature-item:nth-child(2n+1) .feature-card { background-color: var(--eerie-black-3); }
+.feature-item:nth-child(2n+1) .feature-card { background-color: var(--white); }
 
-.feature-item:nth-child(2n) .feature-card { background-color: var(--smoky-black-3); }
+.feature-item:nth-child(2n) .feature-card { background-color: var(--white); }
 
 .feature-card .card-icon {
   max-width: max-content;
@@ -1384,7 +1399,7 @@ textarea.input-field {
 .footer-link:is(:hover, :focus-visible) { color: var(--gold-crayola); }
 
 .copyright {
-  color: var(--quick-silver);
+  color: var(--white);
   line-height: var(--lineHeight-3);
 }
 

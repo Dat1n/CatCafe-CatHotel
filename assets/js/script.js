@@ -5,27 +5,29 @@
 /**
  * PRELOAD
  * 
- * loading will be end after document is loaded
+ * Loading will end after document is loaded with a delay.
  */
 
 const preloader = document.querySelector("[data-preaload]");
 
 window.addEventListener("load", function () {
-  preloader.classList.add("loaded");
-  document.body.classList.add("loaded");
+  // Set a delay before adding the 'loaded' class
+  setTimeout(function () {
+    preloader.classList.add("loaded");
+    document.body.classList.add("loaded");
+  }, 2000); // Delay of 5 seconds before applying the 'loaded' class
 });
 
-
-
 /**
- * add event listener on multiple elements
+ * Add event listener on multiple elements
  */
 
 const addEventOnElements = function (elements, eventType, callback) {
   for (let i = 0, len = elements.length; i < len; i++) {
     elements[i].addEventListener(eventType, callback);
   }
-}
+};
+
 
 
 
