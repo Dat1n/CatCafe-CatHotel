@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
   setTimeout(function () {
     preloader.classList.add("loaded");
     document.body.classList.add("loaded");
-  }, 2000); // Delay of 5 seconds before applying the 'loaded' class
+  }, 2000); 
 });
 
 /**
