@@ -2152,6 +2152,7 @@ a.btn.slider-reveal .text-1 {
 
   .navbar-item {
     border-block-start: none;
+    color: hsl(38, 61%, 73%);
   }
 
   .navbar .separator {
