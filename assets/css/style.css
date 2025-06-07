@@ -900,12 +900,12 @@ body.nav-active {
 .hero .slider-item.active .hero-title,
 .hero .slider-item.active .hero-text,
 .hero .slider-item.active .section-subtitle {
-  color: black; /* Set the text color to black */
+  color: rgb(255, 255, 255); /* Set the text color to black */
 }
 
 /* Targeting the specific button */
 a.btn.slider-reveal .text-1 {
-  color: black;
+  color: rgb(0, 0, 0);
 }
 
 /* For screens smaller than 768px (phones) */
@@ -920,6 +920,17 @@ a.btn.slider-reveal .text-1 {
   padding-block: 120px;
   min-height: 100vh;
   overflow: hidden;
+  z-index: 1;
+}
+
+.hero .slider-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
   z-index: 1;
 }
 
