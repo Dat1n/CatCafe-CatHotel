@@ -296,6 +296,9 @@ body.nav-active {
 .body-4 {
   font-size: var(--fontSize-body-4);
 }
+.footer-brand > p.body-4 {
+  margin-bottom: 30px; /* adds space below the "Open" text */
+}
 
 .label-1 {
   font-size: var(--fontSize-label-1);
@@ -857,7 +860,11 @@ body.nav-active {
 }
 
 .sidebar-link {
+  display: inline;
+  color: var(--gold-crayola); /* static gold */
   transition: var(--transition-1);
+  text-decoration: underline; /* underline always */
+  cursor: pointer;
 }
 
 .sidebar-link:is(:hover, :focus-visible) {
