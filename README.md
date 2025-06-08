@@ -1,5 +1,7 @@
 🐾 Cat Café & Hotel Website
 
+🔎 Live Demo ([Cat Cafe & Hotel](https://dat1n.github.io/CatCafe-CatHotel))
+
 🧾 Description
 Welcome to the official website of a cozy Cat Café & Hotel — a modern, responsive site built with HTML, CSS, and JavaScript.
 
@@ -57,6 +59,3 @@ JavaScript (Vanilla)
 ├── assets/             
 │   └── favicon.svg    
 
-
-
-🔎 Live Demo ([Cat Cafe & Hotel](https://dat1n.github.io/CatCafe-CatHotel))
