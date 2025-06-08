@@ -685,6 +685,12 @@ body.nav-active {
 /*-----------------------------------*\
   #HEADER
 \*-----------------------------------*/
+.logo {
+  width: 150px;
+  height: auto; /* or a fixed height like 50px if you prefer */
+  display: block;
+  object-fit: contain;
+}
 
 .header .btn {
   display: none;
@@ -696,16 +702,16 @@ body.nav-active {
   left: 0;
   width: 100%;
   background-color: transparent;
-  padding-block: 40px;
+  padding-block: 30px;
   z-index: 4;
   border-block-end: 1px solid transparent;
   transition: var(--transition-1);
 }
 
 .header.active {
-  padding-block: 20px;
-  background-color: var(--white);
-  border-color: var(--white);
+  padding-block: 30px;
+  background-color: var(--smoky-black-1);
+  border-color: transparent;
 }
 
 .header.hide {
@@ -729,7 +735,7 @@ body.nav-active {
 .nav-open-btn .line {
   width: 30px;
   height: 2px;
-  background-color: var(--black);
+  background-color: hsl(38, 51%, 81%);
   margin-block: 4px;
   transform-origin: left;
 }
