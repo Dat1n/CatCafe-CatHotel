@@ -296,8 +296,18 @@ body.nav-active {
 .body-4 {
   font-size: var(--fontSize-body-4);
 }
+
+.body-5 {
+  font-size: var(--fontSize-body-4);
+}
+
 .footer-brand > p.body-4 {
-  margin-bottom: 30px; /* adds space below the "Open" text */
+  margin-bottom: 30px;
+}
+
+.footer-brand > p.body-5 {
+  margin-bottom: 5px;
+  margin-top: 6px;
 }
 
 .label-1 {
@@ -852,11 +862,17 @@ body.nav-active {
 }
 
 .navbar-text {
-  margin-block: 10px;
+  margin-block: 4px;
 }
 
 .navbar .body-4 {
   color: var(--quick-silver);
+  margin-bottom: 0px;
+}
+
+.navbar .body-5 {
+  color: var(--quick-silver);
+  margin: 0px;
 }
 
 .sidebar-link {
@@ -1527,6 +1543,11 @@ a.btn.slider-reveal .text-1 {
 }
 
 .footer-brand :is(.body-4, .label-1) {
+  color: var(--quick-silver);
+  line-height: var(--lineHeight-3);
+}
+
+.footer-brand :is(.body-5, .label-1) {
   color: var(--quick-silver);
   line-height: var(--lineHeight-3);
 }
