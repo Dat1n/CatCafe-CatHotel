@@ -187,60 +187,44 @@ AOS.init({
   duration: 600,
   offset: 100,
   easing: "ease-in-out",
-  once: false,
-  disable: false,
+  once: true,
+  disable: window.innerWidth < 768,
 });
 
-if (window.innerWidth < 768) {
-  document.querySelectorAll(".service-card").forEach((card) => {
+function addScrollAnimation(
+  selector,
+  className = "mobile-hover",
+  threshold = 0.5
+) {
+  document.querySelectorAll(selector).forEach((card) => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            card.classList.add("mobile-hover");
+            card.classList.add(className);
           } else {
-            card.classList.remove("mobile-hover");
+            card.classList.remove(className);
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold }
     );
     observer.observe(card);
   });
 }
 
-// Mobile "hover" effect for feature and event cards on scroll
-if (window.innerWidth < 768) {
-  // Feature cards
-  document.querySelectorAll(".feature-card").forEach((card) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            card.classList.add("mobile-hover");
-          } else {
-            card.classList.remove("mobile-hover");
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(card);
+document.addEventListener("DOMContentLoaded", () => {
+  AOS.init({
+    duration: 600,
+    offset: 100,
+    easing: "ease-in-out",
+    once: false,
+    disable: false,
   });
 
-  document.querySelectorAll(".event-card").forEach((card) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            card.classList.add("mobile-hover");
-          } else {
-            card.classList.remove("mobile-hover");
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(card);
-  });
-}
+  if (window.innerWidth < 768) {
+    addScrollAnimation(".service-card");
+    addScrollAnimation(".feature-card");
+    addScrollAnimation(".event-card");
+  }
+});
