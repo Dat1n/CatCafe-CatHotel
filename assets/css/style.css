@@ -1103,6 +1103,16 @@ a.btn.slider-reveal .text-1 {
 
 .service-card {
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card.mobile-hover .has-before::before {
+  transform: rotateY(0.5turn) translateX(50%);
+  transition-delay: 300ms;
+}
+
+.service-card.mobile-hover .card-banner {
+  transform: scale(1.05);
 }
 
 .service-card .has-before {
@@ -1423,6 +1433,31 @@ a.btn.slider-reveal .text-1 {
   padding: 30px 20px 40px;
 }
 
+.feature-card .card-icon {
+  max-width: max-content;
+  margin-inline: auto;
+  transition: var(--transition-2);
+}
+
+.feature-card:is(:hover, :focus-within) .card-icon,
+.feature-card.mobile-hover .card-icon {
+  transform: scale(-1) rotate(180deg);
+}
+
+.feature-card.mobile-hover,
+.feature-card:is(:hover, :focus-within) {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transform: scale(1.03);
+  transition: all 0.3s;
+}
+
+.event-card.mobile-hover,
+.event-card:is(:hover, :focus-within) {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transform: scale(1.03);
+  transition: all 0.3s;
+}
+
 .feature-item:nth-child(2n + 1) .feature-card {
   background-color: var(--white);
 }
@@ -1461,6 +1496,12 @@ a.btn.slider-reveal .text-1 {
 .event-card {
   position: relative;
   overflow: hidden;
+}
+
+.event-card.mobile-hover.hover\:shine::after,
+.event-card.hover\:shine:is(:hover, :focus-within)::after {
+  transform: skewX(-0.08turn) translateX(275%);
+  transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .event-card .card-content {

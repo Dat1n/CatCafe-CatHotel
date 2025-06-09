@@ -1,10 +1,8 @@
-'use strict';
-
-
+"use strict";
 
 /**
  * PRELOAD
- * 
+ *
  * Loading will end after document is loaded with a delay.
  */
 
@@ -15,7 +13,7 @@ window.addEventListener("load", function () {
   setTimeout(function () {
     preloader.classList.add("loaded");
     document.body.classList.add("loaded");
-  }, 1000); 
+  }, 1000);
 });
 
 /**
@@ -27,9 +25,6 @@ const addEventOnElements = function (elements, eventType, callback) {
     elements[i].addEventListener(eventType, callback);
   }
 };
-
-
-
 
 /**
  * NAVBAR
@@ -57,10 +52,9 @@ const closeNavbarOnClick = function () {
 };
 
 // Add click event to navigation links
-navLinks.forEach(link => {
+navLinks.forEach((link) => {
   link.addEventListener("click", closeNavbarOnClick);
 });
-
 
 /**
  * HEADER & BACK TOP BTN
@@ -80,7 +74,7 @@ const hideHeader = function () {
   }
 
   lastScrollPos = window.scrollY;
-}
+};
 
 window.addEventListener("scroll", function () {
   if (window.scrollY >= 50) {
@@ -92,8 +86,6 @@ window.addEventListener("scroll", function () {
     backTopBtn.classList.remove("active");
   }
 });
-
-
 
 /**
  * HERO SLIDER
@@ -111,7 +103,7 @@ const updateSliderPos = function () {
   lastActiveSliderItem.classList.remove("active");
   heroSliderItems[currentSlidePos].classList.add("active");
   lastActiveSliderItem = heroSliderItems[currentSlidePos];
-}
+};
 
 const slideNext = function () {
   if (currentSlidePos >= heroSliderItems.length - 1) {
@@ -121,7 +113,7 @@ const slideNext = function () {
   }
 
   updateSliderPos();
-}
+};
 
 heroSliderNextBtn.addEventListener("click", slideNext);
 
@@ -133,7 +125,7 @@ const slidePrev = function () {
   }
 
   updateSliderPos();
-}
+};
 
 heroSliderPrevBtn.addEventListener("click", slidePrev);
 
@@ -147,17 +139,23 @@ const autoSlide = function () {
   autoSlideInterval = setInterval(function () {
     slideNext();
   }, 7000);
-}
+};
 
-addEventOnElements([heroSliderNextBtn, heroSliderPrevBtn], "mouseover", function () {
-  clearInterval(autoSlideInterval);
-});
+addEventOnElements(
+  [heroSliderNextBtn, heroSliderPrevBtn],
+  "mouseover",
+  function () {
+    clearInterval(autoSlideInterval);
+  }
+);
 
-addEventOnElements([heroSliderNextBtn, heroSliderPrevBtn], "mouseout", autoSlide);
+addEventOnElements(
+  [heroSliderNextBtn, heroSliderPrevBtn],
+  "mouseout",
+  autoSlide
+);
 
 window.addEventListener("load", autoSlide);
-
-
 
 /**
  * PARALLAX EFFECT
@@ -168,18 +166,81 @@ const parallaxItems = document.querySelectorAll("[data-parallax-item]");
 let x, y;
 
 window.addEventListener("mousemove", function (event) {
-
-  x = (event.clientX / window.innerWidth * 10) - 5;
-  y = (event.clientY / window.innerHeight * 10) - 5;
+  x = (event.clientX / window.innerWidth) * 10 - 5;
+  y = (event.clientY / window.innerHeight) * 10 - 5;
 
   // reverse the number eg. 20 -> -20, -5 -> 5
-  x = x - (x * 2);
-  y = y - (y * 2);
+  x = x - x * 2;
+  y = y - y * 2;
 
   for (let i = 0, len = parallaxItems.length; i < len; i++) {
     x = x * Number(parallaxItems[i].dataset.parallaxSpeed);
     y = y * Number(parallaxItems[i].dataset.parallaxSpeed);
     parallaxItems[i].style.transform = `translate3d(${x}px, ${y}px, 0px)`;
   }
-
 });
+
+/**
+ * AOS ANIMATION
+ */
+AOS.init({
+  duration: 600,
+  offset: 100,
+  easing: "ease-in-out",
+  once: false,
+  disable: false,
+});
+
+if (window.innerWidth < 768) {
+  document.querySelectorAll(".service-card").forEach((card) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            card.classList.add("mobile-hover");
+          } else {
+            card.classList.remove("mobile-hover");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(card);
+  });
+}
+
+// Mobile "hover" effect for feature and event cards on scroll
+if (window.innerWidth < 768) {
+  // Feature cards
+  document.querySelectorAll(".feature-card").forEach((card) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            card.classList.add("mobile-hover");
+          } else {
+            card.classList.remove("mobile-hover");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(card);
+  });
+
+  document.querySelectorAll(".event-card").forEach((card) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            card.classList.add("mobile-hover");
+          } else {
+            card.classList.remove("mobile-hover");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(card);
+  });
+}
