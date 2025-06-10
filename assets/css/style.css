@@ -512,6 +512,11 @@ body.nav-active {
   transition: var(--transition-3);
 }
 
+.hover\:shine.mobile-hover::after {
+  transform: skewX(-0.08turn) translateX(275%);
+  transition: var(--transition-3);
+}
+
 .img-holder {
   aspect-ratio: var(--width) / var(--height);
   overflow: hidden;
