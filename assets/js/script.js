@@ -181,107 +181,50 @@ window.addEventListener("mousemove", function (event) {
 });
 
 /**
- * AOS ANIMATION
+ * AOS ANIMATION (Mobile Only)
  */
-AOS.init({
-  duration: 600,
-  offset: 100,
-  easing: "ease-in-out",
-  once: true,
-  disable: window.innerWidth < 768,
-});
-
-function addScrollAnimation(
-  selector,
-  className = "mobile-hover",
-  threshold = 0.5
-) {
-  document.querySelectorAll(selector).forEach((card) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            card.classList.add(className);
-          } else {
-            card.classList.remove(className);
-          }
-        });
-      },
-      { threshold }
-    );
-    observer.observe(card);
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
+  const isMobile = window.innerWidth < 980;
+
   AOS.init({
     duration: 600,
     offset: 100,
     easing: "ease-in-out",
     once: false,
-    disable: false,
+    disable: !isMobile, // disable AOS on non-mobile
   });
 
-  if (window.innerWidth < 768) {
-    addScrollAnimation(".service-card");
-    addScrollAnimation(".hover\\:shine");
-    addScrollAnimation(".feature-card");
-    addScrollAnimation(".event-card");
+  // Scroll animation only if AOS is active (mobile only)
+  if (isMobile) {
+    function addScrollAnimation(
+      selector,
+      className = "in-view",
+      threshold = 0.5
+    ) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(className);
+            } else {
+              entry.target.classList.remove(className);
+            }
+          });
+        },
+        { threshold }
+      );
+
+      document.querySelectorAll(selector).forEach((el) => {
+        observer.observe(el);
+      });
+    }
+
+    // These will animate only on mobile
+    addScrollAnimation(".btn.glass-btn", "in-view", 0.3);
+    addScrollAnimation(".hover-underline", "in-view", 0.5);
+    addScrollAnimation(".service-card", "mobile-hover");
+    addScrollAnimation(".hover\\:shine", "mobile-hover");
+    addScrollAnimation(".feature-card", "mobile-hover");
+    addScrollAnimation(".event-card", "mobile-hover");
   }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-        } else {
-          entry.target.classList.remove("in-view");
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  document.querySelectorAll(".hover-underline").forEach((el) => {
-    observer.observe(el);
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-        } else {
-          entry.target.classList.remove("in-view");
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  document.querySelectorAll(".btn.glass-btn").forEach((btn) => {
-    observer.observe(btn);
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target); // Animate only once
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  document.querySelectorAll(".btn.glass-btn").forEach((el) => {
-    observer.observe(el);
-  });
 });
