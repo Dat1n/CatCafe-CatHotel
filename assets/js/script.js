@@ -267,3 +267,21 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(btn);
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target); // Animate only once
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll(".btn.glass-btn").forEach((el) => {
+    observer.observe(el);
+  });
+});
