@@ -358,7 +358,7 @@ body.nav-active {
   border-block: 1px solid var(--gold-crayola);
   transform: scaleX(0.2);
   opacity: 0;
-  transition: var(--transition-2);
+  transition: transform 1s ease, opacity 1s ease;
 }
 
 .hover-underline:is(:hover, :focus-visible)::after {
@@ -409,6 +409,7 @@ body.nav-active {
   padding: 12px 45px;
   overflow: hidden;
   z-index: 1;
+  border-radius: 12px;
 }
 
 .btn::before {
@@ -946,6 +947,7 @@ a.btn.slider-reveal .text-1 {
 @media (max-width: 768px) {
   a.btn.slider-reveal {
     background-color: var(--gold-crayola); /* Gold background */
+    border-radius: 12px;
   }
 }
 
@@ -1548,6 +1550,44 @@ a.btn.slider-reveal .text-1 {
 .event .btn {
   margin-inline: auto;
   margin-block-start: 40px;
+}
+
+/*-----------------------------------*\
+  #booking hotel
+\*-----------------------------------*/
+
+.button-wrapper {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 15rem;
+}
+
+.btn.glass-btn {
+  position: relative;
+  color: var(--black);
+  font-size: var(--fontSize-label-2);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letterSpacing-5);
+  max-width: max-content;
+  border: 2px solid var(--gold-crayola);
+  padding: 12px 45px;
+  overflow: hidden;
+  z-index: 1;
+
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.2); /* Gold glow */
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn.glass-btn:hover {
+  background: rgba(255, 215, 0, 0.1); /* subtle gold tint on hover */
+  transform: scale(1.05);
+  box-shadow: 0 12px 36px rgba(255, 215, 0, 0.3);
 }
 
 /*-----------------------------------*\
@@ -2449,5 +2489,19 @@ a.btn.slider-reveal .text-1 {
   .back-top-btn.clicked {
     background-color: var(--gold-crayola);
     color: var(--smoky-black-1);
+  }
+
+  .hover-underline.in-view::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .btn.glass-btn {
+    font-size: 0.9rem;
+    padding: 10px 30px;
+    width: auto;
+    max-width: 90%;
+    margin-inline: auto;
+    display: block;
   }
 }
